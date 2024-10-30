@@ -75,6 +75,6 @@ class Damm
      */
     public function validate(string $string): bool
     {
-        return '0' === $this->calculate($string);
+        return $this->characters[0] === $this->calculate($string);
     }
 }
