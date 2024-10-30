@@ -52,6 +52,7 @@ class DammTest extends TestCase
         $damm = new Damm($characters, new $class);
 
         self::assertSame($expected, $damm->calculate($string));
+        self::assertTrue($damm->validate($string . $expected));
     }
 
     /**

@@ -27,6 +27,11 @@
             "Tests\\": "tests/"
         }
     },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.x-dev"
+        }
+    },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
