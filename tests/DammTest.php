@@ -4,11 +4,24 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sunaoka\Damm\Damm;
 use Sunaoka\Damm\OrderInterface;
 
 class DammTest extends TestCase
 {
+    public function test_order_default(): void
+    {
+        $damm = new Damm('0123456789');
+
+        self::assertSame('4', $damm->calculate('572'));
+
+        self::assertTrue($damm->validate('5724'));
+        self::assertFalse($damm->validate('5727'));
+        self::assertTrue($damm->validate('112946'));
+        self::assertFalse($damm->validate('112949'));
+    }
+
     public function test_order10(): void
     {
         $damm = new Damm('0123456789', new \Sunaoka\Damm\Order\Order10());
@@ -47,6 +60,7 @@ class DammTest extends TestCase
      *
      * @param class-string<OrderInterface> $class
      */
+    #[DataProvider('dataProvider')]
     public function test_orders(string $class, string $characters, string $string, string $expected): void
     {
         $damm = new Damm($characters, new $class);
