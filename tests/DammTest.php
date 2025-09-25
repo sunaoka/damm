@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sunaoka\Damm\Damm;
 use Sunaoka\Damm\OrderInterface;
 
@@ -59,6 +60,7 @@ class DammTest extends TestCase
      *
      * @param class-string<OrderInterface> $class
      */
+    #[DataProvider('dataProvider')]
     public function test_orders(string $class, string $characters, string $string, string $expected): void
     {
         $damm = new Damm($characters, new $class);
