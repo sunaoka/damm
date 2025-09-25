@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Sunaoka\Damm;
 
+use Sunaoka\Damm\Order\Order10;
+
 /**
  * Damm algorithm
  *
@@ -22,14 +24,14 @@ class Damm
     protected $lookup;
 
     /**
-     * @var list<list<int>>
+     * @var list<int[]>
      */
     protected $quasigroup;
 
-    public function __construct(string $characters, OrderInterface $order)
+    public function __construct(string $characters, ?OrderInterface $order = null)
     {
         $this->setCharacters($characters);
-        $this->setQuasigroup($order);
+        $this->setQuasigroup($order ?? new Order10());
     }
 
     public function setCharacters(string $characters): void

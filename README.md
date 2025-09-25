@@ -20,15 +20,14 @@ composer require sunaoka/damm
 
 ## Usage
 
-### Quasigroup of order 10
+### Quasigroup of order 10 (default)
 
 ```php
 <?php
 
 use Sunaoka\Damm\Damm;
-use Sunaoka\Damm\Order\Order10;
 
-$damm = new Damm('0123456789', new Order10());
+$damm = new Damm('0123456789');
 
 echo $damm->calculate('572');
 // => 4
